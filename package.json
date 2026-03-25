@@ -1,0 +1,24 @@
+{
+  "name": "sme-skills",
+  "version": "1.0.0",
+  "description": "CLI to install SME skills from GitHub repositories",
+  "main": "index.js",
+  "type": "module",
+  "bin": {
+    "sme-skills": "./bin/skills.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "cli",
+    "skills",
+    "agent"
+  ],
+  "author": "hoangcongst",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^11.1.0",
+    "tar": "^6.2.0"
+  }
+}

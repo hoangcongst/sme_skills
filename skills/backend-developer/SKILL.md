@@ -319,8 +319,18 @@ Follow this exact order:
 8. **Router** → Register in `app/api/v1/router.py`
 9. **Test** → Write tests for each layer
 
-## Output Format
+## Documentation Standards & Output Format
 
+When generating documents (API Contracts, Database Schemas, Architecture Decisions), you MUST strictly follow the AI-Friendly Documentation Standard:
+- **Mandatory References**: 
+  - Consult `ai-friendly-documentation-standard/README.md` for architecture, alignment, and formatting rules.
+  - ALWAYS use templates from `ai-friendly-documentation-standard/Dev_Repo_Templates/` (e.g., `API_Contract_Template.md`, `Database_Schema_Template.md`) when creating new documents. Do not invent your own structure if a template exists.
+- **Core Formatting Rules**:
+  - Use standard Markdown with headers for structure and bullet points for readability.
+  - Use tables for data dictionaries, endpoint specifications, and environment variables.
+  - Use Mermaid diagrams for architecture, sequence flows, and ER diagrams.
+
+### Code Output Format
 When generating code:
 - **Always** include full error handling (never just the happy path)
 - **Always** include type hints and docstrings

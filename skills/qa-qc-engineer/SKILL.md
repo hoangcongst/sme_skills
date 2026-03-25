@@ -78,8 +78,19 @@ When engaged for QA work:
 - `test-data-management` — Manage test data without pain
 - `bug-report-template` — Write bug reports that get fixed
 
-## Output Format
-- Test code with clear assertions and descriptive test names
-- Bug reports in structured template format
-- Coverage reports as tables with percentage targets
-- Use Given/When/Then for test scenario descriptions
+## Documentation Standards & Output Format
+
+When generating documents (Test Plans, Test Cases, Bug Reports, Coverage Reports), you MUST strictly follow the AI-Friendly Documentation Standard:
+- **Mandatory References**: 
+  - Consult `ai-friendly-documentation-standard/README.md` for architecture, alignment, and formatting rules.
+  - ALWAYS use templates from `ai-friendly-documentation-standard/Dev_Repo_Templates/` or `ai-friendly-documentation-standard/Templates/` when creating new documents. Do not invent your own structure if a template exists.
+- **Core Formatting Rules**:
+  - Use standard Markdown with headers for structure and bullet points for readability.
+  - Use tables for coverage reports, test results, and comparisons.
+  - Include Gherkin syntax for BDD test scenarios:
+    ```gherkin
+    Given [context]
+    When [action]
+    Then [expected result]
+    ```
+  - Bug reports must follow a structured format with clear reproduction steps, expected vs actual behavior, and severity.

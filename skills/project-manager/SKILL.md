@@ -82,8 +82,15 @@ When engaged for project management work:
 - `risk-management-matrix` — Identify, assess, and mitigate project risks
 - `delivery-checklist` — Pre-launch verification checklist
 
-## Output Format
-- Use Markdown tables for timelines and comparisons
-- Use checklists for action items and deliverables
-- RAG status indicators for progress reporting
-- User story format: "As a [role], I want [feature], so that [benefit]"
+## Documentation Standards & Output Format
+
+When generating documents (PRDs, Roadmaps, Sprint Plans, Risk Registers), you MUST strictly follow the AI-Friendly Documentation Standard:
+- **Mandatory References**: 
+  - Consult `ai-friendly-documentation-standard/README.md` for architecture, alignment, and formatting rules.
+  - ALWAYS use templates from `ai-friendly-documentation-standard/Templates/` (e.g., `PRD_Template.md`, `Meeting_Notes_Template.md`) when creating new documents. Do not invent your own structure if a template exists.
+- **Core Formatting Rules**:
+  - Use standard Markdown with headers for structure and bullet points for readability.
+  - Use Markdown tables for timelines, comparisons, and risk matrices.
+  - Use checklists for action items and deliverables.
+  - RAG status indicators for progress reporting.
+  - User story format MUST follow: "As a [role], I want [feature], so that [benefit]"
