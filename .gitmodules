@@ -1,0 +1,3 @@
+[submodule "ai-friendly-documentation-standard"]
+	path = ai-friendly-documentation-standard
+	url = git@github.com:hoangcongst/ai-friendly-documentation-standard.git
