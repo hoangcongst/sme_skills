@@ -1,6 +1,6 @@
 # SME Skills
 
-A collection of persona-driven Agent Skills for SME (Subject Matter Expert) roles, alongside a CLI tool to easily install them into your agent workflows.
+A collection of persona-driven Agent Skills for SME (Small and Medium Enterprises) roles, alongside a CLI tool to easily install them into your agent workflows.
 
 ## The CLI
 
