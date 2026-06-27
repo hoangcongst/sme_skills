@@ -1,0 +1,125 @@
+<!doctype html>
+<!--
+  Neutral example for the rich-content-renderer skill.
+
+  Demonstrates a minimal HTML frame the renderer turns into a PNG:
+    - 1080x1350 single-feed layout (4:5)
+    - Brand mark, headline, sub-headline, two hero tiles, CTA
+    - The renderer is a real browser (Playwright + system Chrome),
+      so you can use any standard HTML/CSS you like: flexbox, CSS
+      grid, <picture>, inline <svg>, class-based styling,
+      @font-face, var(...), comments, non-ASCII in <title>. The
+      only constraints are offline (no https://) and the inline
+      styles here are kept simple for clarity.
+    - All "images" are inline SVG via data: URL, so this example
+      renders without any external assets.
+
+  To adapt this example for a real project:
+    1. Replace the copy (HEADLINE / SUBHEADLINE / CTA) with the
+       user's verbatim text.
+    2. Replace the inline SVG data URLs with <img src="..."> tags
+       pointing at the user's assets (relative to this HTML file's
+       directory or absolute paths).
+    3. Replace the placeholder colors with the user's palette.
+    4. Set font-family to a family the renderer has loaded via
+       --fonts (or via --fonts-map).
+    5. Render:
+         node ../renderer/render.mjs \
+           --html   ./neutral-example.html \
+           --fonts  /path/to/fonts \
+           --sizes  "1080x1350"
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Neutral Example — single-feed</title>
+</head>
+<body style="background-color: #FFF7E6; margin: 0; padding: 0;">
+  <main style="
+    display: flex;
+    flex-direction: column;
+    width: 1080px;
+    height: 1350px;
+    padding: 80px;
+    box-sizing: border-box;
+    background-color: #FFF7E6;
+    font-family: 'Inter', sans-serif;
+  ">
+
+    <header style="display: flex; flex-direction: column; align-items: center; margin-bottom: 40px;">
+      <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 24px;">
+        <img
+          src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22200%22%20height%3D%2260%22%20viewBox%3D%220%200%20200%2060%22%3E%3Crect%20x%3D%222%22%20y%3D%2210%22%20width%3D%2240%22%20height%3D%2240%22%20rx%3D%228%22%20fill%3D%22%23111827%22%2F%3E%3Ctext%20x%3D%2256%22%20y%3D%2240%22%20font-family%3D%22Inter%22%20font-weight%3D%22800%22%20font-size%3D%2230%22%20fill%3D%22%230F172A%22%3EBrand%3C%2Ftext%3E%3C%2Fsvg%3E"
+          style="width: 200px; height: 60px;"
+          alt="Brand"
+        />
+      </div>
+      <h1 style="
+        font-family: 'Inter', sans-serif;
+        font-size: 64px;
+        font-weight: 800;
+        line-height: 0.95;
+        color: #0F172A;
+        text-align: center;
+        margin: 0;
+      ">Headline goes here</h1>
+      <p style="
+        font-size: 30px;
+        color: #475569;
+        margin-top: 16px;
+        text-align: center;
+      ">Optional sub-headline goes here.</p>
+    </header>
+
+    <section style="display: flex; gap: 24px; align-items: center; justify-content: center; flex: 1;">
+
+      <div style="
+        display: flex;
+        width: 320px;
+        height: 640px;
+        border-radius: 36px;
+        overflow: hidden;
+        background-color: #DBEAFE;
+      ">
+        <img
+          src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22320%22%20height%3D%22640%22%20viewBox%3D%220%200%20320%20640%22%3E%3Crect%20width%3D%22320%22%20height%3D%22640%22%20fill%3D%22%23DBEAFE%22%2F%3E%3Ctext%20x%3D%22160%22%20y%3D%22330%22%20text-anchor%3D%22middle%22%20font-family%3D%22Inter%22%20font-size%3D%2240%22%20fill%3D%22%231E3A8A%22%3EAsset%201%3C%2Ftext%3E%3C%2Fsvg%3E"
+          style="width: 100%; height: 100%; object-fit: cover;"
+          alt="Asset 1"
+        />
+      </div>
+
+      <img
+        src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22120%22%20height%3D%22120%22%20viewBox%3D%220%200%20120%20120%22%3E%3Cpath%20d%3D%22M10%2095%20C%2035%2035%2C%2085%2035%2C%20110%2060%22%20stroke%3D%22%23F97316%22%20stroke-width%3D%228%22%20stroke-linecap%3D%22round%22%20fill%3D%22none%22%2F%3E%3Cpath%20d%3D%22M100%2050%20L110%2060%20L100%2070%22%20stroke%3D%22%23F97316%22%20stroke-width%3D%228%22%20stroke-linecap%3D%22round%22%20fill%3D%22none%22%2F%3E%3C%2Fsvg%3E"
+        style="width: 120px; height: 120px;"
+        alt=""
+      />
+
+      <div style="
+        display: flex;
+        width: 320px;
+        height: 640px;
+        border-radius: 36px;
+        overflow: hidden;
+        background-color: #D1FAE5;
+      ">
+        <img
+          src="data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22320%22%20height%3D%22640%22%20viewBox%3D%220%200%20320%20640%22%3E%3Crect%20width%3D%22320%22%20height%3D%22640%22%20fill%3D%22%23D1FAE5%22%2F%3E%3Ctext%20x%3D%22160%22%20y%3D%22330%22%20text-anchor%3D%22middle%22%20font-family%3D%22Inter%22%20font-size%3D%2240%22%20fill%3D%22%23166534%22%3EAsset%202%3C%2Ftext%3E%3C%2Fsvg%3E"
+          style="width: 100%; height: 100%; object-fit: cover;"
+          alt="Asset 2"
+        />
+      </div>
+
+    </section>
+
+    <footer style="display: flex; justify-content: center; margin-top: 40px;">
+      <a style="
+        display: flex; align-items: center; justify-content: center;
+        height: 72px; padding: 0 40px; border-radius: 999px;
+        background-color: #F97316; color: #FFFFFF;
+        font-size: 32px; font-weight: 700; text-decoration: none;
+      ">Call to action</a>
+    </footer>
+
+  </main>
+</body>
+</html>

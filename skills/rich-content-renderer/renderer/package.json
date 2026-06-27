@@ -1,0 +1,19 @@
+{
+  "name": "rich-content-renderer",
+  "version": "3.0.0",
+  "description": "HTML -> PNG renderer (Playwright with system Chrome). Pure Node CLI, no browser download. Owned by the rich-content-renderer skill in the marketer agent bundle.",
+  "type": "module",
+  "main": "render.mjs",
+  "bin": {
+    "rich-content-render": "./render.mjs"
+  },
+  "scripts": {
+    "render": "node render.mjs"
+  },
+  "keywords": ["playwright", "chrome", "html", "png", "image", "marketing"],
+  "license": "ISC",
+  "dependencies": {
+    "mime-types": "^3.0.2",
+    "playwright-core": "^1.48.0"
+  }
+}

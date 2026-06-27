@@ -1,0 +1,51 @@
+<!doctype html>
+<!--
+  Neutral HTML frame template for the rich-content-renderer skill.
+
+  This is a STARTING POINT only. It contains no product-specific tokens,
+  no copy, no asset paths, no hardcoded colors. Customize per project:
+
+    - Replace {{PLACEHOLDERS}} with the user's copy / asset paths / sizes.
+    - Replace the CSS variables in frame-base.css with the user's palette.
+    - Replace `font-family` values with the families the user registered
+      via --fonts / --fonts-map.
+
+  The renderer is a real browser (Playwright + system Chrome), so you
+  can use any standard HTML/CSS: flexbox, CSS grid, inline <svg>,
+  @font-face, var(...), comments, non-ASCII in <title>. The only
+  constraints are offline (no https://) and "if you also pass --fonts,
+  don't ship @font-face in CSS for the same fonts".
+
+  See SKILL.md §"Composing the HTML Frame" for the full list.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{{TITLE}}</title>
+  <link rel="stylesheet" href="frame-base.css" />
+</head>
+<body class="{{BG_CLASS}}">
+  <main class="frame {{LAYOUT}}" id="frame">
+
+    {{LOGO}}
+
+    <header class="header">
+      <h1 class="headline">{{HEADLINE}}</h1>
+      <p class="subheadline">{{SUBHEADLINE}}</p>
+    </header>
+
+    <section class="stage" id="stage">
+      {{STAGE}}
+    </section>
+
+    <footer class="footer">
+      <a class="cta {{CTA_CLASS}}" href="#">{{CTA_LABEL}}</a>
+    </footer>
+
+    {{BADGE}}
+    {{DECOR}}
+
+  </main>
+</body>
+</html>

@@ -1,0 +1,227 @@
+/* Neutral frame styles for the rich-content-renderer skill.
+ *
+ * STARTING POINT ONLY — replace the design tokens and class rules
+ * below with whatever the user supplies per project. No product,
+ * palette, or typography is locked here.
+ *
+ * The renderer is a real browser (Playwright + system Chrome), so
+ * any standard CSS works: flexbox, CSS grid, @font-face, inline
+ * <svg>, var(...), @media, gradients — all fine. The only offline
+ * constraint is that image references resolve via local paths or
+ * data: URLs.
+ *
+ * Rename the design tokens to whatever naming convention the user's
+ * project uses. The defaults below are placeholders showing intent,
+ * not a recommended palette.
+ */
+
+:root {
+  /* Surface */
+  --surface:        #FFF7E6;
+  --surface-card:   #FFFFFF;
+  --surface-muted:  #F3F4F6;
+
+  /* Ink */
+  --ink:            #0F172A;
+  --ink-muted:      #475569;
+
+  /* Accent (set these from the user's palette) */
+  --accent:         #F97316;
+  --accent-soft:    #FACC15;
+  --accent-strong:  #1E3A8A;
+
+  /* Dark mode */
+  --bg-dark:        #111827;
+  --card-dark:      #1F2937;
+  --border-dark:    #334155;
+  --ink-dark:       #FFFFFF;
+  --ink-muted-dark: #CBD5E1;
+
+  /* Typography — names must match the families registered via
+     --fonts / --fonts-map on the renderer. */
+  --font-display: "Inter";
+  --font-body:    "Inter";
+
+  /* Geometry */
+  --radius-card:  24px;
+  --radius-phone: 40px;
+  --radius-pill:  999px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  font-family: var(--font-body);
+  color: var(--ink);
+}
+
+.frame {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Backgrounds ------------------------------------------------------------ */
+
+.bg-light { background-color: var(--surface); }
+.bg-dark  { background-color: var(--bg-dark); color: var(--ink-dark); }
+
+/* Header ----------------------------------------------------------------- */
+
+.headline {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 64px;
+  line-height: 0.95;
+  letter-spacing: -0.5px;
+  color: var(--ink);
+}
+.bg-dark .headline { color: var(--ink-dark); }
+
+.subheadline {
+  margin-top: 12px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 1.25;
+  color: var(--ink-muted);
+}
+.bg-dark .subheadline { color: var(--ink-muted-dark); }
+
+/* Brand mark slot -------------------------------------------------------- */
+
+.brand-mark {
+  position: absolute;
+  top: 48px;
+  left: 56px;
+  height: 56px;
+  z-index: 5;
+}
+.brand-mark.right { left: auto; right: 56px; }
+
+/* Phone / image slot ----------------------------------------------------- */
+
+.phone {
+  position: relative;
+  border-radius: var(--radius-phone);
+  overflow: hidden;
+  background-color: var(--surface-card);
+  display: flex;
+}
+.phone img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* CTA -------------------------------------------------------------------- */
+
+.cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 72px;
+  padding: 0 40px;
+  border-radius: var(--radius-pill);
+  background-color: var(--accent);
+  color: #FFFFFF;
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 32px;
+  letter-spacing: 0.2px;
+  text-decoration: none;
+}
+.cta.invert { background-color: var(--accent-soft); color: var(--ink); }
+
+/* Badges & chips --------------------------------------------------------- */
+
+.badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: var(--radius-pill);
+  background-color: var(--accent-soft);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 22px;
+}
+
+.chip {
+  display: flex;
+  align-items: center;
+  padding: 8px 14px;
+  border-radius: 12px;
+  background-color: var(--surface-card);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 24px;
+}
+
+/* Layouts --------------------------------------------------------------- *
+ * Each layout sets padding/background only. Per-element layout (display,
+ * flex-direction, gap, etc.) belongs on inline style attributes — see
+ * SKILL.md for the rationale.
+ */
+
+/* single-feed — 1080x1350 default */
+.frame.single-feed     { padding: 80px; background-color: var(--surface); }
+.frame.single-feed.dark { background-color: var(--bg-dark); }
+
+/* carousel — multiple slides, numbered badge top-right */
+.frame.carousel       { padding: 80px; background-color: var(--surface); }
+.slide-number {
+  position: absolute;
+  top: 48px;
+  right: 56px;
+  font-family: var(--font-display);
+  font-size: 28px;
+  color: var(--ink-muted);
+}
+
+/* reel-vertical — 1080x1920 */
+.frame.reel-vertical  { padding: 120px 80px 220px; background-color: var(--bg-dark); }
+.frame.reel-vertical .panel {
+  width: 880px;
+  padding: 32px;
+  border-radius: var(--radius-card);
+  background-color: var(--card-dark);
+  border: 2px solid var(--border-dark);
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+/* split-screen — two phones + arrow + badge */
+.frame.split-screen   { padding: 80px; background-color: var(--surface); }
+
+/* loop — circular N-step infographic (flex-wrap, not grid) */
+.frame.loop           { padding: 80px; background-color: var(--surface); }
+.frame.loop .step {
+  width: 280px;
+  background-color: var(--surface-card);
+  border-radius: var(--radius-card);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.frame.loop .step .num {
+  font-family: var(--font-display);
+  font-size: 44px;
+  color: var(--accent);
+}
+
+/* desk-scene — cozy notebook + phone */
+.frame.desk-scene     { padding: 80px; background-color: var(--surface); }
+.frame.desk-scene .notebook {
+  height: 720px;
+  background-color: var(--surface-card);
+  border-radius: 16px;
+  padding: 32px;
+}
